@@ -19,11 +19,53 @@ public class LancamentoResource extends ResourceSupport {
 	private String situacao;
 	@Mapping("dataLancamentoContaCorrenteCliente")
 	private String dataConfirmacao;
-	@Mapping("dataLancamentoContaCorrenteCliente")
-	private String dadosBancarios;
+	
+	@Mapping("nomeBanco")	
+	private String nomeBanco;
+	
+	@Mapping("lancamentoContaCorrenteCliente.dadosDomicilioBancario.numeroAgencia")	
+	private String numeroAgencia;
+	
+	@Mapping("lancamentoContaCorrenteCliente.dadosDomicilioBancario.numeroContaCorrente")	
+	private String numeroContaCorrente;
+		
+	@Mapping("valorLancamentoRemessa")
 	private BigDecimal valorFinal;
+
+	public String getDataLancamento() {
+		return dataLancamento;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public Long getNumero() {
+		return numero;
+	}
+
+	public String getSituacao() {
+		return situacao;
+	}
+
+	public String getDataConfirmacao() {
+		return dataConfirmacao;
+	}
+
+	public String getNomeBanco() {
+		return nomeBanco;
+	}
+
+	public String getNumeroAgencia() {
+		return numeroAgencia;
+	}
+
+	public String getNumeroContaCorrente() {
+		return numeroContaCorrente;
+	}
+
+	public BigDecimal getValorFinal() {
+		return valorFinal;
+	}
 			
 }
-
-//Data do lançamento | Descrição | Número      | Situação | Data de confirmação | Dados bancários                    | Valor final
-//18/11/2016         | Regular   | 67210807400 | Pago     | 18/11/2016          | BANCO ABCD S.A Ag 12 CC 0001231234 | R$ 28.714,00

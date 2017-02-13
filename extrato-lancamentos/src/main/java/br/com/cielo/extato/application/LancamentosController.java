@@ -27,29 +27,28 @@ public class LancamentosController {
 	private ControleLancamentoRepository controleLancamentoRepository;
 
 	
-//	@RequestMapping(value="/lancamentos", method = RequestMethod.GET)
-//	public ResponseEntity<List<LancamentoResource>> get() {
-//						
-//		DomicilioBancario domicilioBancario = new DomicilioBancario(new Banco(), 1l, "00000000065470");
-//		LancamentoContaCorrenteCliente lancamentoContaCorrenteCliente = new LancamentoContaCorrenteCliente(64320236054l, "Pago", 
-//				domicilioBancario, "regular", null);		
-//		ControleLancamento controleLancamento = new ControleLancamento(lancamentoContaCorrenteCliente, 
-//				LocalDate.of(2016, 06, 03), 
-//				LocalDate.of(2016, 06, 03), 
-//				42236790, "LA-56", "1", 
-//				"BANCO ABCD S.A.             ", 22, "12996721", "1597", 11499.1, 1464922800000l, 1464922800000l);
-//		
-//		controleLancamentoRepository.save(controleLancamento);
-//		
-//		ControleLancamento controleLancamento1 = controleLancamentoRepository.findOne(1l);
-//				
-//		Mapper mapper = new DozerBeanMapper();
-//		LancamentoResource destObject =  mapper.map(controleLancamento1, LancamentoResource.class);
-//				
-//		 
-//		List<LancamentoResource> lancamentoResource = null;
-//		return new ResponseEntity<List<LancamentoResource>>(lancamentoResource , HttpStatus.OK);
-//	}
+	@RequestMapping(value="/lancamentos", method = RequestMethod.GET)
+	public ResponseEntity<List<LancamentoResource>> get() {
+						
+		DomicilioBancario domicilioBancario = new DomicilioBancario(123l, 1l, "00000000065470");
+		LancamentoContaCorrenteCliente lancamentoContaCorrenteCliente = new LancamentoContaCorrenteCliente(64320236054l, "Pago", 
+				domicilioBancario, "regular", null);		
+		ControleLancamento controleLancamento = new ControleLancamento(lancamentoContaCorrenteCliente, 
+				LocalDate.of(2016, 06, 03), 
+				LocalDate.of(2016, 06, 03), 
+				42236790, "LA-56", "1", 
+				"BANCO ABCD S.A.             ", 22, "12996721", "1597", 11499.1, 1464922800000l, 1464922800000l);
+		
+		controleLancamentoRepository.save(controleLancamento);
+		
+		ControleLancamento controleLancamento1 = controleLancamentoRepository.findOne(1l);
+				
+		Mapper mapper = new DozerBeanMapper();
+		LancamentoResource destObject =  mapper.map(controleLancamento1, LancamentoResource.class);
+				
+		List<LancamentoResource> lancamentoResource = null;
+		return new ResponseEntity<List<LancamentoResource>>(lancamentoResource , HttpStatus.OK);
+	}
 	
 //	@RequestMapping(value = "/planets", method = RequestMethod.GET)
 //	public ResponseEntity<List<PlanetResource>> getPlanets() {
