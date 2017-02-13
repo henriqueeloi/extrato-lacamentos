@@ -9,6 +9,8 @@ public class LancamentoResource extends ResourceSupport {
 
 	public LancamentoResource(){}
 	
+	@Mapping("codigoIdentificadorUnico")
+	private String codigoIdentificadorUnico;	
 	@Mapping("dataEfetivaLancamento")
 	private String dataLancamento;
 	@Mapping("lancamentoContaCorrenteCliente.nomeTipoOperacao")
@@ -66,6 +68,10 @@ public class LancamentoResource extends ResourceSupport {
 
 	public BigDecimal getValorFinal() {
 		return valorFinal;
+	}
+
+	public String getCodigoIdentificadorUnico() {
+		return codigoIdentificadorUnico;
 	}
 			
 }

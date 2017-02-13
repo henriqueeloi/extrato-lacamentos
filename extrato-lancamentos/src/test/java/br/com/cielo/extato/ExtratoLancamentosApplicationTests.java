@@ -28,15 +28,15 @@ public class ExtratoLancamentosApplicationTests {
 		DomicilioBancario domicilioBancario = new DomicilioBancario(123l, 1l, "00000000065470");
 		LancamentoContaCorrenteCliente lancamentoContaCorrenteCliente = new LancamentoContaCorrenteCliente(64320236054l, "Pago", 
 				domicilioBancario, "regular", null);		
-		ControleLancamento controleLancamento = new ControleLancamento(lancamentoContaCorrenteCliente, 
+		ControleLancamento controleLancamento = new ControleLancamento("1", lancamentoContaCorrenteCliente, 
 				LocalDate.of(2016, 06, 03), 
 				LocalDate.of(2016, 06, 03), 
-				42236790, "LA-56", "1", 
+				42236790, "LA-56",  
 				"BANCO ABCD S.A.             ", 22, "12996721", "1597", 11499.1, 1464922800000l, 1464922800000l);
 		
 		controleLancamentoRepository.save(controleLancamento);
 		
-		ControleLancamento findOne = controleLancamentoRepository.findOne(1l);
+		ControleLancamento findOne = controleLancamentoRepository.findOne("1");
 		
 		Assert.hasText(findOne.getLancamentoContaCorrenteCliente().getDadosDomicilioBancario().getNumeroContaCorrente());
 		
