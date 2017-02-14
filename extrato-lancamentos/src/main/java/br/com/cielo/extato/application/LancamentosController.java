@@ -1,9 +1,9 @@
 package br.com.cielo.extato.application;
 
-import java.time.LocalDate;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,11 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.cielo.extato.domain.ControleLancamento;
-import br.com.cielo.extato.domain.DomicilioBancario;
-import br.com.cielo.extato.domain.LancamentoContaCorrenteCliente;
 import br.com.cielo.extato.infrastructure.ControleLancamentoRepository;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 
 @RestController

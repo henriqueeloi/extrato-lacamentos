@@ -1,7 +1,6 @@
 package br.com.cielo.extato;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 import javax.annotation.PostConstruct;
 
@@ -9,32 +8,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import br.com.cielo.extato.domain.ControleLancamento;
 import br.com.cielo.extato.domain.DomicilioBancario;
 import br.com.cielo.extato.domain.LancamentoContaCorrenteCliente;
 import br.com.cielo.extato.infrastructure.ControleLancamentoRepository;
-import br.com.cielo.extato.service.ImportaLancamentosService;
 
-@ComponentScan
-//@EnableMongoRepositories
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+
 @SpringBootApplication
+@EnableScheduling
 public class ExtratoLancamentosApplication {
 
 	@Autowired
 	private ControleLancamentoRepository controleLancamentoRepository;
-	
-	@Autowired
-	private ImportaLancamentosService service;
-	
+		
 	public static void main(String[] args) {
 		SpringApplication.run(ExtratoLancamentosApplication.class, args);
 	}
 	
-	@PostConstruct
+	//@PostConstruct
 	public void loadData() throws JsonParseException, JsonMappingException, IOException {
 		DomicilioBancario domicilioBancario = new DomicilioBancario(123l, 1l, "00000000065470");
 		LancamentoContaCorrenteCliente lancamentoContaCorrenteCliente = new LancamentoContaCorrenteCliente(64320236054l, "Pago", 
@@ -47,6 +42,5 @@ public class ExtratoLancamentosApplication {
 		
 		controleLancamentoRepository.save(controleLancamento);
 		
-		service.start();
 	}
 }
