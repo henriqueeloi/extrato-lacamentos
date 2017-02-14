@@ -41,6 +41,5 @@ public class ExtratoLancamentosApplication {
 				"BANCO ABCD S.A.             ", 22, "12996721", "1597", 11499.1, 1464922800000l, 1464922800000l);
 		
 		controleLancamentoRepository.save(controleLancamento);
-		
 	}
 }
