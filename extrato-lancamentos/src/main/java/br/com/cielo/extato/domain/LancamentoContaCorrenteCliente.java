@@ -2,19 +2,28 @@ package br.com.cielo.extato.domain;
 
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
+
+@Entity
 public class LancamentoContaCorrenteCliente {
     
 	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private Long numeroRemessaBanco;
     private String nomeSituacaoRemessa;
     
-//    @OneToOne(optional=false, cascade = CascadeType.ALL)
+    @OneToOne(optional=false, cascade = CascadeType.ALL)
     private DomicilioBancario dadosDomicilioBancario;
     private String nomeTipoOperacao;
-//    @Transient
+    @Transient
     private List<Object> dadosAnaliticoLancamentoFinanceiroCliente;
     
 	public LancamentoContaCorrenteCliente(Long numeroRemessaBanco,

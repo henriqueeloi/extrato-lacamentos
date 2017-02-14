@@ -29,7 +29,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 
 @RestController
-@RequestMapping(value = "contas", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/", produces = MediaType.APPLICATION_JSON_VALUE)
 public class LancamentosController {
 
 	@Autowired

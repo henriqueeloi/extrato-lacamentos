@@ -1,12 +1,17 @@
 package br.com.cielo.extato.domain;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
+
+@Entity
 public class ControleLancamento {
 	
 	@Id
     public String codigoIdentificadorUnico;
-//    @OneToOne(optional=false, cascade = CascadeType.ALL)
+    @OneToOne(optional=false, cascade = CascadeType.ALL)
 	private LancamentoContaCorrenteCliente lancamentoContaCorrenteCliente;
 	private String dataEfetivaLancamento;
 	private String dataLancamentoContaCorrenteCliente;

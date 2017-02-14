@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import br.com.cielo.extato.domain.DomicilioBancario;
 import br.com.cielo.extato.domain.LancamentoContaCorrenteCliente;
 
 public interface LancamentoContaCorrenteClienteRepository extends CrudRepository<LancamentoContaCorrenteCliente, Long> {
