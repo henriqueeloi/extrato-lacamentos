@@ -1,25 +1,15 @@
 package br.com.cielo.extato.domain;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
-
-@Entity
 public class ControleLancamento {
 	
 	@Id
     public String codigoIdentificadorUnico;
-    @OneToOne(optional=false, cascade = CascadeType.ALL)
+//    @OneToOne(optional=false, cascade = CascadeType.ALL)
 	private LancamentoContaCorrenteCliente lancamentoContaCorrenteCliente;
-	private LocalDate dataEfetivaLancamento;
-	private LocalDate dataLancamentoContaCorrenteCliente;
+	private String dataEfetivaLancamento;
+	private String dataLancamentoContaCorrenteCliente;
 	private Integer numeroEvento;
 	private String descricaoGrupoPagamento;
 	private String nomeBanco;
@@ -32,8 +22,8 @@ public class ControleLancamento {
 			
 	public ControleLancamento(String codigoIdentificadorUnico,
 			LancamentoContaCorrenteCliente lancamentoContaCorrenteCliente,
-			LocalDate dataEfetivaLancamento,
-			LocalDate dataLancamentoContaCorrenteCliente, Integer numeroEvento,
+			String dataEfetivaLancamento,
+			String dataLancamentoContaCorrenteCliente, Integer numeroEvento,
 			String descricaoGrupoPagamento, String nomeBanco,
 			Integer quantidadeLancamentoRemessa, String numeroRaizCNPJ,
 			String numeroSufixoCNPJ, Double valorLancamentoRemessa,
@@ -60,11 +50,11 @@ public class ControleLancamento {
 		return lancamentoContaCorrenteCliente;
 	}
 
-	public LocalDate getDataEfetivaLancamento() {
+	public String getDataEfetivaLancamento() {
 		return dataEfetivaLancamento;
 	}
 
-	public LocalDate getDataLancamentoContaCorrenteCliente() {
+	public String getDataLancamentoContaCorrenteCliente() {
 		return dataLancamentoContaCorrenteCliente;
 	}
 

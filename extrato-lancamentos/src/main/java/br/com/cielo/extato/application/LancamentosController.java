@@ -2,12 +2,16 @@ package br.com.cielo.extato.application;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -32,32 +36,19 @@ public class LancamentosController {
 	private ControleLancamentoRepository controleLancamentoRepository;
 
 	Mapper mapper = new DozerBeanMapper();
+
+	@RequestMapping(method = RequestMethod.GET)
+	public HttpEntity<List<Link>> index() {
+		List<Link> links = new ArrayList<Link>();
+		Link lancamentos = linkTo(methodOn(LancamentosController.class).get()).withRel("lancamentos");
+
+		links.add(lancamentos);
+		return new HttpEntity<List<Link>>(links);
+	}
 	
 	@RequestMapping(value="/lancamentos", method = RequestMethod.GET)
 	public ResponseEntity<List<LancamentoResource>> get() {
-								
-		DomicilioBancario domicilioBancario = new DomicilioBancario(123l, 1l, "00000000065470");
-		LancamentoContaCorrenteCliente lancamentoContaCorrenteCliente = new LancamentoContaCorrenteCliente(64320236054l, "Pago", 
-				domicilioBancario, "regular", null);		
-		ControleLancamento controleLancamento = new ControleLancamento("1", lancamentoContaCorrenteCliente, 
-				LocalDate.of(2016, 06, 03), 
-				LocalDate.of(2016, 06, 03), 
-				42236790, "LA-56",  
-				"BANCO ABCD S.A.             ", 22, "12996721", "1597", 11499.1, 1464922800000l, 1464922800000l);
-		
-		controleLancamentoRepository.save(controleLancamento);
-
-		DomicilioBancario domicilioBancario1 = new DomicilioBancario(123l, 1l, "00000000065470");
-		LancamentoContaCorrenteCliente lancamentoContaCorrenteCliente1 = new LancamentoContaCorrenteCliente(64320236054l, "Pago", 
-				domicilioBancario1, "regular", null);		
-		ControleLancamento controleLancamento1 = new ControleLancamento("25", lancamentoContaCorrenteCliente1, 
-				LocalDate.of(2016, 06, 03),
-				LocalDate.of(2016, 06, 03),
-				42236790, "LA-56",
-				"BANCO ABCD S.A.             ", 22, "12996721", "1597", 11499.1, 1464922800000l, 1464922800000l);
-		
-		controleLancamentoRepository.save(controleLancamento1);
-		
+				
 		List<LancamentoResource> listaRetorno = controleLancamentoRepository.findAll().stream().map(a -> mapper.map(a, LancamentoResource.class)).collect(Collectors.toList());		
 		listaRetorno.forEach(l -> l.add(linkTo(methodOn(LancamentosController.class).getLancamento(l.getCodigoIdentificadorUnico())).withSelfRel()));
 				

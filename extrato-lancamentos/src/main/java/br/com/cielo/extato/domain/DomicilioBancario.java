@@ -1,16 +1,10 @@
 package br.com.cielo.extato.domain;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import org.springframework.data.annotation.Id;
 
-@Entity
 public class DomicilioBancario {
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+//    @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;	
 	private Long codigoBanco;
 	private Long numeroAgencia;

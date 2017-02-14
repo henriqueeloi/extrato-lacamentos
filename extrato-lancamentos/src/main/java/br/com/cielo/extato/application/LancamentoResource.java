@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 import org.dozer.Mapping;
 import org.springframework.hateoas.ResourceSupport;
+import org.springframework.hateoas.core.Relation;
+
 
 public class LancamentoResource extends ResourceSupport {
 
